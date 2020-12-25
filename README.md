@@ -14,6 +14,8 @@ In this course, DevOps students will learn how to use Terraform and similar IaaC
 
 * [Tekperfect: Docker](https://tekperfect.com/devops-docs/#/courses/06-Virtualization/lessons/docker)
 * [Tekperfect: OS Basics ](https://tekperfect.com/devops-docs/#/courses/02-Os_Basics/home)
+* AWS CLI
+
 
 
 ## Learning Outcomes
@@ -25,3 +27,9 @@ Students by the end of the course will be able to...
 1. maintain infrastructue with Terraform or Ansible like features
 
 
+## Lessons
+
+1. Introduction
+1. 
+1.
+1.
