@@ -22,7 +22,7 @@ Terraform language is writin in haschicorp configuration language in `.tf` file,
 
 Within every main `.tf` file or the file terraform builds off of has two main blocks: `Provider` and  `Rescource`. Each of these blocks are resposible for a specific declerative result of the terraform build. They will always follow this **syntax**
 
-```tf
+```json
 <Block Type> "<Provider> or <Rescource Type>" "<Local Name>" {
     # Block body
     <IDENTIFIER> = <EXPRESSION> # Argument
@@ -46,7 +46,7 @@ Each infrastrucutre may have different needs, so `aws` could be part of your pro
 
 Rescource blocks build of off providers specifically their features. For `aws` we can be talking the instance e.g. VPC, Security Groups and Subnet. To state the `resource` needed from the `provider`, we state the `Block Type`: `resource` and for the `Resource Type` we state the desired feature from the provider we want to change or create
 
-```tf
+```json
 resource "aws_instance" "web-server " {
   ami               = "ami-123123"
   instance_type     = "t2.micro" 
