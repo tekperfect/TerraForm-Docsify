@@ -5,7 +5,8 @@
 ## ⏱ Agenda
 
 1. 🏆 Learning Objectives
-1. 
+1. 📖 Terraform
+1. ✍️ Practice
 1. 📚 Resources & Credits
  
 ## 🏆 Learning Objectives
@@ -48,6 +49,9 @@ Verify the installation with
 ```bash
 sudo terraform -v
 ```
+
+After I will suggest to install the appropiate terraform linter to your edtitor, I am using VScode, so I will use this [extenstion](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)
+
 We will working with v0.12+ compatable requirements, so make sure you have at least v0.12 of the terraform cli
 
 ## ✍️ Practice

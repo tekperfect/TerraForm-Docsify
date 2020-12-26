@@ -1,12 +1,13 @@
 <!-- Lessons/02-TerraForm-Files -->
-<!-- http://localhost:3000/#/02-TerraForm-Files -->
-# Cracking into The Code
+<!-- http://localhost:3000/#/Lessons/02-TerraForm-Files -->
+# Cracking Terraform
 
 ## ⏱ Agenda
 
 1. 🏆 Learning Objectives
 1. 🅰️ Language & Syntax
-1. 
+1. ⌨️ CLI
+1. ✍️ Practice
 1. 📚 Resources & Credits
  
 ## 🏆 Learning Objectives
@@ -15,7 +16,7 @@
 1. Find `provider` and associated documentation  
 1. Creating `.tf*` files
 
-## 🅰️ language & Syntax
+## 🅰️ language
 
 Terraform language is writin in haschicorp configuration language in `.tf` file, it is simmilar to a json format
 
@@ -54,6 +55,24 @@ resource "aws_instance" "web-server " {
 ### MISC
 
 Of course there are many other `Block Types`, but these are the main two we need to get started on a terraform and start a working ifrastructure, we will be working on blocks like `output` and `variable`. `output` is similar to a print statement in programing and `variable` is exactly what it sound like.
+
+
+## ⌨️ CLI
+
+Now that we know the basics of the terraform code, how do we `apply` our work and changes or even initialize our enviroment? That's where the terraform cli you installed comes in! Here are the three top commands you will use:
+
+
+* `terraform plan` - `plan`, show the user what changes have been made to simmilar to `git diff` or `git status`
+
+
+* `terraform apply` - `apply`, pushes the changes made in the `.tf` files to the infrastructure, just like `git push`. Terraform will automatically delete, add or change any rescource as mentioned int he file
+
+
+* `terraform destroy` - `destory`, destorys the infrastructre you created with the `.tf` this is reccomended over manually dfestorying an instance
+
+
+## ✍️ Practice
+
 
 
 
