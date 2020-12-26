@@ -4,6 +4,8 @@
 
 * [ ] VPC creation
 * [ ] Subnet
+* [ ] different OS
+* [ ] s3 buckets
 * [ ] Elastic IP
 * [ ] Static IP Address
 * [ ] Security Groups
