@@ -95,8 +95,10 @@ provider "aws" {
 Now we can't have our keys open, that's devops 101, so how can we hide them?
 
 
-### Variables
+<!-- tabs:start -->
+### **Variables**
 
+### Variables
 Both Method would require us using variables and in terraform, we use the `var.name` method to access variables, denoted as such:
 
 
@@ -128,7 +130,9 @@ Cons:
 
 #### Using `.tfvars`
 
-This method would require us to create a file name `secret.tfvars` and in the file  we can record our keys. **MAKE SURE TO ADD THE FILE TO THE IGNORE**.
+This method would require us to create a file name `secret.tfvars` and in the file  we can record our keys.
+
+ **MAKE SURE TO ADD THE FILE TO THE GITIGNORE**.
 
 
 ```tf
@@ -143,9 +147,11 @@ terraform apply \
   -var-file="secret.tfvars"
 ```
 
-### AWS config
+### **AWS config**
 
-This method is unique to the aws `provider`, so be sure to read your provider document if they have any other way
+### Config
+
+This method is unique to the aws `provider`, so be sure to read your provider documentation if they have any other way
 
 
 ```json
@@ -154,6 +160,7 @@ provider "aws" {
   credentials_file = "~/.aws/creds"
 }
 ```
+<!-- tabs:end -->
 
 
 
