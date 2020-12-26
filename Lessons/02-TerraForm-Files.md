@@ -44,7 +44,7 @@ Each infrastrucutre may have different needs, so `aws` could be part of your pro
 
 ### Resource
 
-Rescource blocks build of off providers specifically their features. For `aws` we can be talking the instance e.g. VPC, Security Groups and Subnet. To state the `resource` needed from the `provider`, we state the `Block Type`: `resource` and for the `Resource Type` we state the desired feature from the provider we want to change or create
+Rescource blocks build of off providers specifically their features. For `aws` we can be talking the instance e.g. VPC, Security Groups and Subnet. To state the `resource` needed from the `provider`, we state the `Block Type`: `resource` and for the `Resource Type` we state the desired feature from the provider we want to change or create and the following is the local name within the code so you can refrence it.
 
 ```json
 resource "aws_instance" "web-server " {
@@ -72,6 +72,18 @@ Now that we know the basics of the terraform code, how do we `apply` our work an
 
 
 ## ✍️ Practice
+
+We will do the following:
+
+* Create a ec2 instance on AWS
+* Assign it a tag
+* Output information related to the instance
+  * Server id
+  * Server private ip
+  * Assigned Tags
+
+So we know from the aws [documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs), to connect to our aws dashboard we need a regionn
+
 
 
 

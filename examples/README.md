@@ -10,10 +10,8 @@
 * [ ] Static IP Address
 * [ ] Security Groups
 * [ ] Transit Gateways
+* [ ] Working with Workspaces
+* [ ] Credential managaing
 
-Each example should have well documentated examples
 
-
-## Templates
-
-What should they have @Alfonso
+Each example should be documentated
