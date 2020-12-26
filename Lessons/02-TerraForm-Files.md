@@ -1,4 +1,5 @@
 <!-- Lessons/02-TerraForm-Files -->
+<!-- http://localhost:3000/#/02-TerraForm-Files -->
 # Cracking into The Code
 
 ## ⏱ Agenda
@@ -56,7 +57,7 @@ Of course there are many other `Block Types`, but these are the main two we need
 
 
 
-# 📚 Resources & Credits
+## 📚 Resources & Credits
 * [Terraform AWS Register](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 * [Terraform Registry](https://registry.terraform.io/browse/providers)
 * [Temporary Providers](https://www.terraform.io/docs/providers/index.html)
