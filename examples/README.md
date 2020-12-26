@@ -15,3 +15,13 @@
 
 
 Each example should be documentated
+
+Terraform workspace is similar to `git branch`
+
+```bash
+terraform workspace new "name"
+```
+
+```bash
+terraform workspace select "name"
+```
