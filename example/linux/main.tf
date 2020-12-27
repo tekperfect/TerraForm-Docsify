@@ -19,7 +19,6 @@ resource "aws_vpc" "vpc-1" {
 resource "aws_subnet" "subnet-1" {
     vpc_id      = aws_vpc.vpc-1.id
     cidr_block  = "10.0.1.0/24"
-  
 }
 
 resource "aws_internet_gateway" "gateway" {
@@ -66,3 +65,14 @@ resource "aws_eip" "eip" {
   
 }
 
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ec2_transit_gateway_vpc_attachment
+
+resource "aws_ec2_transit_gateway" "tgw" {
+  
+}
+
+resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_attach" {
+  subnet_ids         = [aws_subnet.subnet-1.id]
+  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
+  vpc_id             = aws_vpc.vpc-1.id
+}
