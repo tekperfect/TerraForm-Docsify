@@ -1,6 +1,6 @@
 <!-- Lessons/02-TF-Files -->
 <!-- http://localhost:3000/#/Lessons/02-TF-Files -->
-# Cracking Terraform
+# 🐣 Cracking Terraform
 
 ## ⏱ Agenda
 
