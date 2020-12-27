@@ -20,7 +20,7 @@
 
 Terraform language is writin in haschicorp configuration language in `.tf` file, it is simmilar to a json format
 
-Within every main `.tf` file or the file terraform builds off of has two main blocks: `provider` and  `rescource`. Each of these blocks are resposible for a specific declerative result of the terraform build. They will always follow this **syntax**
+Within every main `.tf` file or the file terraform builds off of two main blocks: `provider` and  `rescource`. Each of these blocks are resposible for a specific declerative result of the terraform build. They will always follow this **syntax**
 
 ```json
 <Block Type> "<Provider> or <Rescource Type>" "<Local Name>" {
@@ -44,7 +44,7 @@ Each infrastrucutre may have different needs, so `aws` could be part of your pro
 
 ### Resource
 
-Rescource blocks build of off providers specifically their features. For `aws` we can be talking the instance e.g. VPC, Security Groups and Subnet. To state the `resource` needed from the `provider`, we state the `Block Type`: `resource` and for the `Resource Type` we state the desired feature from the provider we want to change or create and the following is the local name within the code so you can refrence it.
+Rescource blocks build of off providers specifically their features. For `aws` we can be talking about the instance VPC, Security Groups and Subnet. To state the `resource` needed from the `provider`, we state the `Block Type`: `resource` and for the `Resource Type` we state the desired feature from the provider we want to change or create and the following is the local name within the code so you can refrence it.
 
 
 ```json
@@ -55,7 +55,7 @@ resource "aws_instance" "web-server " {
 ```
 #### Modifying Rescources
 
-Modifying rescources demontrates the power Terraform has, if you want to delete a certain rescource or even a name, Terraform is smart enough to see the difference in changes and delete it. For example if you had: 
+Modifying rescources demontrates the power Terraform has, if you want to delete a certain rescource or even it's tags, Terraform is smart enough to see the difference in changes and delete it. For example if you had: 
 
 ```json
 resource "aws_instance" "web-server " {
@@ -67,12 +67,12 @@ resource "aws_instance" "web-server " {
 }
 ```
 
-And you removed all the entire of `tags` and `terraform apply`, terraform will delete everything and keep the instance.
+if you removed the entirity of `tags` and then applied it with `terraform apply`, terraform will delete everything modifying the instance and keep the instance.
 
 
 ### MISC
 
-Of course there are many other `Block Types`, but these are the main two we need to get started on a terraform and start a working ifrastructure, we will be working on blocks like `output` and `variable`. `output` is similar to a print statement in programing and `variable` is exactly what it sound like.
+Of course there are many other `Block Types`, but these are the main two we need to get started on a terraform and start a working ifrastructure, you will be working on blocks like `output` and `variable` on your own. But here is a short explanation `output` is similar to a print statement in programing and `variable` is a placeholder for data.
 
 
 ## ⌨️ CLI
@@ -132,7 +132,7 @@ provider "aws" {
 
 #### Enviorment variables `TF_VAR_name`
 
-This method we will create enviroment variables in the terminal. Terraform [prioritizes](https://www.terraform.io/docs/configuration/variables.html) enviroment variables over anything other method and must follow this pattern: `TF_VAR_name`
+In this method we will create enviroment variables in the terminal. Terraform [prioritizes](https://www.terraform.io/docs/configuration/variables.html) enviroment variables over anything other method and must follow this pattern: `TF_VAR_name`
 
 ```bash
 export TF_VAR_access_key=AKIAIOSFODNN7EXAMPLE
@@ -166,6 +166,14 @@ Since the file does not have the default name, `terraform.tvfars` we have to use
 terraform apply \
   -var-file="secret.tfvars"
 ```
+Pros:
+* Persistant
+* Reproducible
+* Can change easily
+
+Cons:
+* Can accidently track
+
 
 ### **AWS config**
 
@@ -173,16 +181,25 @@ terraform apply \
 
 This method is unique to the aws `provider`, so be sure to read your provider documentation if they have any other way
 
-
 ```json
 provider "aws" {
   region           = "us-west-1"
   credentials_file = "~/.aws/creds"
 }
 ```
+
+Pros:
+* Don't have to worry about accidently tracking your credentials
+* Fast
+* Persistant \ Don't have to reassign
+
+Cons:
+* Not easily reproducible with others
+* Can't work with other credentials [Unless you use profiles]
+
 <!-- tabs:end -->
 
-After we specify the provider go ahead and run `terraform init`, so terraform can download all the aws files. Then run `terraform apply` to make sure your keys are correct. Then we will create an instance, so again refer to the documentation we know the rescource name is `aws_instance` and we learn the required pieces of information needed here is the ami and instance_type, So lets go to the aws console and go through the steps to create an [instance](https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#LaunchInstanceWizard:)
+After we specify the provider go ahead and run `terraform init`, so terraform can download all the aws plugins. Then run `terraform apply` to make sure your keys are correct. Then we will create an instance, so again refer to the documentation we know the rescource name is `aws_instance` and we learn the required pieces of information needed here is the ami and instance_type, So lets go to the aws console and go through the steps to create an [instance](https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#LaunchInstanceWizard:)
 
 
 ![Machine Image](../images/ami.png)
