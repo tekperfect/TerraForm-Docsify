@@ -57,7 +57,7 @@ resource "aws_network_interface" "server-nif" {
   
 }
 
-resource "aws_eip" "eip" {
+resource "aws_eip" "linux-eip" {
     vpc = true
     network_interface = aws_network_interface.server-nif.id
     associate_with_private_ip = "10.0.1.25"
