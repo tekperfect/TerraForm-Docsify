@@ -1,5 +1,5 @@
-<!-- Lessons/02-TerraForm-Files -->
-<!-- http://localhost:3000/#/Lessons/02-TerraForm-Files -->
+<!-- Lessons/02-TF-Files -->
+<!-- http://localhost:3000/#/Lessons/02-TF-Files -->
 # Cracking Terraform
 
 ## ⏱ Agenda
