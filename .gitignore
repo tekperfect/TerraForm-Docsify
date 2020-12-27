@@ -29,7 +29,10 @@ override.tf.json
 # example: *tfplan*
 
 # Testing Folder
-examples/test/
+test/
+
+# Secrets
+secret.tfvars
 
 # AWS RootKey
 rootkey.csv
