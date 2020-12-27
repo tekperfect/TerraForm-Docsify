@@ -12,7 +12,7 @@
 * [ ] Transit Gateways
 * [ ] Working with Workspaces
 * [ ] Credential managaing
-
+* [ ] Windows & Ubuntu Counter Part 
 
 Each example should be documentated
 
