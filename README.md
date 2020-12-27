@@ -9,14 +9,11 @@
 
 In this course, DevOps students will learn how to use Terraform and similar IaaC tools. Students will work together to pratice on Terrafrom tools and build working infrastructure and application managed by IaaC tools.
 
-
 ## Prerequisites
 
 * [Tekperfect: Docker](https://tekperfect.com/devops-docs/#/courses/06-Virtualization/lessons/docker)
 * [Tekperfect: OS Basics ](https://tekperfect.com/devops-docs/#/courses/02-Os_Basics/home)
-* AWS CLI
-
-
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
 
 ## Learning Outcomes
 
@@ -29,7 +26,6 @@ Students by the end of the course will be able to...
 
 ## Lessons
 
-1. Introduction
-1. 
-1.
-1.
+1. Getting Started
+1. Cracking Terraform
+1. Advance Terraform
