@@ -9,7 +9,7 @@
 1. ⌨️ CLI
 1. ✍️ Practice
 1. 📚 Resources & Credits
- 
+
 ## 🏆 Learning Objectives
 
 1. Creating a Basic Infrastructure with terraform
@@ -32,7 +32,7 @@ Within every main `.tf` file or the file terraform builds off of two main blocks
 ### Provider
 
 Terraform relies on plugins called "providers" and is essential to every terraform build. Providers can be thought up as libraries in traditional programing. Providers are denoted as such
-
+s
 ```json
 provider "aws" {
     region      = "us-west-1"
@@ -40,12 +40,12 @@ provider "aws" {
     secret_key  = "12378asdfs"
 }   
 ```
+
 Each infrastrucutre may have different needs, so `aws` could be part of your providers or not at all. A list of fully suported providers and supporting documentation are [here](https://registry.terraform.io/browse/providers)
 
 ### Resource
 
 Rescource blocks build of off providers specifically their features. For `aws` we can be talking about the instance VPC, Security Groups and Subnet. To state the `resource` needed from the `provider`, we state the `Block Type`: `resource` and for the `Resource Type` we state the desired feature from the provider we want to change or create and the following is the local name within the code so you can refrence it.
-
 
 ```json
 resource "aws_instance" "web-server " {
@@ -53,6 +53,7 @@ resource "aws_instance" "web-server " {
   instance_type     = "t2.micro" 
 }
 ```
+
 #### Modifying Rescources
 
 Modifying rescources demontrates the power Terraform has, if you want to delete a certain rescource or even it's tags, Terraform is smart enough to see the difference in changes and delete it. For example if you had: 
@@ -69,11 +70,9 @@ resource "aws_instance" "web-server " {
 
 if you removed the entirity of `tags` and then applied it with `terraform apply`, terraform will delete everything modifying the instance and keep the instance.
 
-
 ### MISC
 
 Of course there are many other `Block Types`, but these are the main two we need to get started on a terraform and start a working ifrastructure, you will be working on blocks like `output` and `variable` on your own. But here is a short explanation `output` is similar to a print statement in programing and `variable` is a placeholder for data.
-
 
 ## ⌨️ CLI
 
@@ -86,7 +85,6 @@ Now that we know the basics of the terraform code, how do we `apply` our work an
 * `terraform apply` - `apply`, pushes the changes made in the `.tf` files to the infrastructure, just like `git push`. Terraform will automatically delete, add or change any rescource as mentioned int he file
 
 * `terraform destroy` - `destory`, destorys the infrastructre you created with the `.tf` this is reccomended over manually dfestorying an instance
-
 
 ## ✍️ Practice
 
@@ -114,13 +112,12 @@ provider "aws" {
 
 Now we can't have our keys open, that's devops 101, so how can we hide them?
 
-
 <!-- tabs:start -->
 ### **Variables**
 
 ### Variables
-Both Method would require us using variables and in terraform, we use the `var.name` method to access variables, denoted as such:
 
+Both Method would require us using variables and in terraform, we use the `var.name` method to access variables, denoted as such:
 
 ```json
 provider "aws" {
@@ -138,12 +135,15 @@ In this method we will create enviroment variables in the terminal. Terraform [p
 export TF_VAR_access_key=AKIAIOSFODNN7EXAMPLE
 export TF_VAR_secret_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
+
 Pros:
+
 * Overwrite variables you want to change
 * Zero possibility being track to source control
 * Fast for a simple check
 
 Cons:
+
 * Only temporary
 * Not suitable for long projects
 * Lost if you clost the terminal
@@ -153,7 +153,6 @@ Cons:
 This method would require us to create a file name `secret.tfvars` and in the file  we can record our keys.
 
  **MAKE SURE TO ADD THE FILE TO THE GITIGNORE**.
-
 
 ```tf
 access_key=AKIAIOSFODNN7EXAMPLE
@@ -166,14 +165,16 @@ Since the file does not have the default name, `terraform.tvfars` we have to use
 terraform apply \
   -var-file="secret.tfvars"
 ```
+
 Pros:
+
 * Persistant
 * Reproducible
 * Can change easily
 
 Cons:
-* Can accidently track
 
+* Can accidently track
 
 ### **AWS config**
 
@@ -189,11 +190,13 @@ provider "aws" {
 ```
 
 Pros:
+
 * Don't have to worry about accidently tracking your credentials
 * Fast
 * Persistant \ Don't have to reassign
 
 Cons:
+
 * Not easily reproducible with others
 * Can't work with other credentials [Unless you use profiles]
 
@@ -201,9 +204,7 @@ Cons:
 
 After we specify the provider go ahead and run `terraform init`, so terraform can download all the aws plugins. Then run `terraform apply` to make sure your keys are correct. Then we will create an instance, so again refer to the documentation we know the rescource name is `aws_instance` and we learn the required pieces of information needed here is the ami and instance_type, So lets go to the aws console and go through the steps to create an [instance](https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#LaunchInstanceWizard:)
 
-
 ![Machine Image](../images/ami.png)
-
 
 ![Instance Type](../images/instance_type.png)
 
@@ -215,6 +216,7 @@ resource "aws_instance" "web-server" {
   instance_type     = "t2.micro" 
 }
 ```
+
 Now go ahead and complelete teh left over objectives on your own
 
 ### Hints
@@ -234,9 +236,10 @@ Now go ahead and complelete teh left over objectives on your own
   <summary>What it should look like</summary>
 
   [folder](https://github.com/tekperfect)
-  ### main.tf
-  ```json
 
+### main.tf
+
+  ```json
   provider "aws" {
     region      = "us-west-1"
     access_key  = var.access_key
@@ -265,7 +268,9 @@ Now go ahead and complelete teh left over objectives on your own
 
 
   ```
-  ### secret.tfvars 
+
+### secret.tfvars
+
   ```json
   access_key=YOUR_KEY
   secret_key=YOUR_KEY
@@ -273,9 +278,8 @@ Now go ahead and complelete teh left over objectives on your own
   
 </details>
 
-
-
 ## 📚 Resources & Credits
+
 * [Terraform AWS Register](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 * [Terraform Registry](https://registry.terraform.io/browse/providers)
 * [Temporary Providers](https://www.terraform.io/docs/providers/index.html)
