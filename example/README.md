@@ -2,17 +2,18 @@
 # TODO:
 ## Terraform Examples Demonstrate
 
-* [ ] VPC creation
-* [ ] Subnet
-* [ ] different OS
+* [x] VPC creation
+* [x] Subnet
+* [x] different OS
 * [ ] s3 buckets
-* [ ] Elastic IP
-* [ ] Static IP Address
-* [ ] Security Groups
-* [ ] Transit Gateways
+* [X] Elastic IP
+* [X] Static IP Address
+* [X] Security Groups / keys
+* [X] Transit Gateways
+
+
+Optional:
 * [ ] Working with Workspaces
-* [ ] Credential managaing
-* [ ] Windows & Ubuntu Counter Part 
 
 Each example should be documentated
 
