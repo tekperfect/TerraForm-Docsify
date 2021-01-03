@@ -11,3 +11,7 @@
 1. Handeling secretes with vault
 
 # 📚 Resources & Credits
+
+* [Terraform Workspaces](https://www.terraform.io/docs/cloud/workspaces/index.html)
+* [Terraform Variables & Structures](https://www.terraform.io/docs/configuration/variables.html)
+* [Vault by Hashicorp](https://learn.hashicorp.com/vault)
