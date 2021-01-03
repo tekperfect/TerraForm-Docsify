@@ -8,13 +8,17 @@
 
 1. Learn how to use workspaces
 1. Using data structures
-1. Handeling secretes with vault
+1. Using Vault with Terraform
+
+### Security With Vault
+
+
 
 ### Workspaces
 
 ### Variables & Strucutres
 
-### Security With Vault
+
 
 ## 📚 Resources & Credits
 
