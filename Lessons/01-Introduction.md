@@ -5,10 +5,10 @@
 ## ⏱ Agenda
 
 1. 🏆 Learning Objectives
-1. 📖 Terraform
+1. 📖 Terraforms
 1. ✍️ Practice
 1. 📚 Resources & Credits
- 
+
 ## 🏆 Learning Objectives
 
 By the end of this, you'll be able to...
@@ -26,7 +26,8 @@ By the end of this, you'll be able to...
 * Declerative
 
 ### What is Terraform
-**First and fore most Terraform is an IaaC**
+
+#### **First and fore most Terraform is an IaaC**
 
 IaaC or Infrastructure as a Code, is the same as a programmable infrastructure. tl;dr IaaC are ways to  manipulate and or create parts of infrastructure e.g. load balancers, security, and networks via a source code
 
@@ -34,8 +35,8 @@ As an Iaac, Terraform is a DevOps tool to automate and manage the infrastructure
 
 > You can say it's the Docker of infrastructure, as they are both a declerative language [defining the desirted end results ex. We want 5 servers with these set of perms]
 
-
 ### Installation
+
 > The following instruction are for Unix compatiable systems like Ubuntu, otherwise follow [This](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
 If you have a package manager like brew I suggest you use it! make sure you have awscli as well!
