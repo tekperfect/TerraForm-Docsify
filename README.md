@@ -1,6 +1,6 @@
 # Terraform
 
-1, Course Description
+1. Course Description
 1. Prerequisites
 1. Learning Outcomes
 1. Lessons
