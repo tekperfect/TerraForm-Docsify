@@ -12,15 +12,15 @@
 
 ## 🏆 Learning Objectives
 
-1. Creating a Basic Infrastructure with terraform
+1. Creating a Basic Infrastructure with Terraform
 1. Find `provider` and associated documentation  
 1. Creating `.tf*` files
 
-## 🅰️ language
+## 🅰️ Language
 
-Terraform language is writin in haschicorp configuration language in `.tf` file, it is simmilar to a json format
+Terraform language is written in Haschicorp configuration language in `.tf` file, it is similar to a json format.
 
-Within every main `.tf` file or the file terraform builds off of two main blocks: `provider` and  `rescource`. Each of these blocks are resposible for a specific declerative result of the terraform build. They will always follow this **syntax**
+Every main `.tf` file builds off of two main blocks: `provider` and  `rescource`. Each of these blocks are responsible for a specific declarative result of the Terraform build. They will always follow this **syntax**.
 
 ```json
 <Block Type> "<Provider> or <Rescource Type>" "<Local Name>" {
@@ -31,8 +31,8 @@ Within every main `.tf` file or the file terraform builds off of two main blocks
 
 ### Provider
 
-Terraform relies on plugins called "providers" and is essential to every terraform build. Providers can be thought up as libraries in traditional programing. Providers are denoted as such
-s
+Terraform relies on plugins called "providers," which are essential to every Terraform build. Providers can be thought of as libraries in traditional programming. Providers are denoted as such:
+
 ```json
 provider "aws" {
     region      = "us-west-1"
@@ -41,11 +41,11 @@ provider "aws" {
 }   
 ```
 
-Each infrastrucutre may have different needs, so `aws` could be part of your providers or not at all. A list of fully suported providers and supporting documentation are [here](https://registry.terraform.io/browse/providers)
+Each infrastrucutre may have different needs, so `aws` could be part of your providers or not at all. A list of fully suported providers and supporting documentation are [here](https://registry.terraform.io/browse/providers).
 
 ### Resource
 
-Rescource blocks build of off providers specifically their features. For `aws` we can be talking about the instance VPC, Security Groups and Subnet. To state the `resource` needed from the `provider`, we state the `Block Type`: `resource` and for the `Resource Type` we state the desired feature from the provider we want to change or create and the following is the local name within the code so you can refrence it.
+Resource blocks build off of providers, specifically their features. For `aws`, we can be talking about the instance VPC, Security Groups, and Subnet. To state the `resource` needed from the `provider`, we state the `Block Type`: `resource` and for the `Resource Type` we state the desired feature from the provider we want to change or create, and the following is the local name within the code so you can reference it.
 
 ```json
 resource "aws_instance" "web-server " {
@@ -54,9 +54,9 @@ resource "aws_instance" "web-server " {
 }
 ```
 
-#### Modifying Rescources
+#### Modifying Resources
 
-Modifying rescources demontrates the power Terraform has, if you want to delete a certain rescource or even it's tags, Terraform is smart enough to see the difference in changes and delete it. For example if you had: 
+Modifying resources demonstrates the power Terraform has. If you want to delete a certain resource or even its tags, Terraform is smart enough to see the difference in changes and delete it. For example if you had: 
 
 ```json
 resource "aws_instance" "web-server " {
@@ -68,27 +68,27 @@ resource "aws_instance" "web-server " {
 }
 ```
 
-if you removed the entirity of `tags` and then applied it with `terraform apply`, terraform will delete everything modifying the instance and keep the instance.
+If you removed the entirety of `tags` and then applied it with `terraform apply`, Terraform will delete everything modifying the instance and keep the instance.
 
 ### MISC
 
-Of course there are many other `Block Types`, but these are the main two we need to get started on a terraform and start a working ifrastructure, you will be working on blocks like `output` and `variable` on your own. But here is a short explanation `output` is similar to a print statement in programing and `variable` is a placeholder for data.
+Of course, there are many other `Block Types`, but these are the main two we need to get started on a Terraform and start a working infrastructure. You will be working on blocks like `output` and `variable` on your own. But here is a short explanation on how `output` is similar to a print statement in programming while `variable` is a placeholder for data.
 
 ## ⌨️ CLI
 
-Now that we know the basics of the terraform code, how do we `apply` our work and changes or even initialize our enviroment? That's where the terraform cli you installed comes in! Here are the four top commands you will use:
+Now that we know the basics of the Terraform code, how do we `apply` our work and changes or even initialize our enviroment? That's where the Terraform CLI you installed comes in! Here are the top four commands you will use:
 
-* `terraform init` - `init`, intializes the current directory for terraform development!
+* `terraform init` - `init`, intializes the current directory for Terraform development!
 
-* `terraform plan` - `plan`, show the user what changes have been made to simmilar to `git diff` or `git status`
+* `terraform plan` - `plan`, shows the user what changes have been made, similar to `git diff` or `git status`.
 
-* `terraform apply` - `apply`, pushes the changes made in the `.tf` files to the infrastructure, just like `git push`. Terraform will automatically delete, add or change any rescource as mentioned int he file
+* `terraform apply` - `apply`, pushes the changes made in the `.tf` files to the infrastructure, just like `git push`. Terraform will automatically delete, add, or change any resource as mentioned in the file.
 
-* `terraform destroy` - `destory`, destorys the infrastructre you created with the `.tf` this is reccomended over manually dfestorying an instance
+* `terraform destroy` - `destroy`, destroys the infrastructre you created with the `.tf`. This is reccomended over manually destroying an instance.
 
 ## ✍️ Practice
 
-> tip: Always look between your terraform console and your aws console to see the changes!
+> Tip: Always look between your Terraform console and your AWS console to see the changes!
 
 We will do the following:
 
@@ -96,11 +96,11 @@ We will do the following:
 * Create a ec2 instance on AWS
 * Assign it a name
 * Output information related to the instance
-  * Server id
-  * Server private ip
+  * Server ID
+  * Server private IP
   * Assigned name
 
-So we know from the aws [documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs), to connect to our aws provider we need a region and our [aws credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html).
+So we know from the AWS [documentation](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) that to connect to our aws provider, we need a region and our [aws credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html).
 
 ```json
 provider "aws" {
@@ -110,14 +110,14 @@ provider "aws" {
 } 
 ```
 
-Now we can't have our keys open, that's devops 101, so how can we hide them?
+Now we can't have our keys open—that's Devops 101, so how can we hide them?
 
 <!-- tabs:start -->
 ### **Variables**
 
 ### Variables
 
-Both Method would require us using variables and in terraform, we use the `var.name` method to access variables, denoted as such:
+Both methods would require us using variables, and in terraform, we use the `var.name` method to access variables, denoted as such:
 
 ```json
 provider "aws" {
@@ -127,9 +127,9 @@ provider "aws" {
 } 
 ```
 
-#### Enviorment variables `TF_VAR_name`
+#### Environment Variables `TF_VAR_name`
 
-In this method we will create enviroment variables in the terminal. Terraform [prioritizes](https://www.terraform.io/docs/configuration/variables.html) enviroment variables over anything other method and must follow this pattern: `TF_VAR_name`
+In this method we will create environment variables in the terminal. Terraform [prioritizes](https://www.terraform.io/docs/configuration/variables.html) environment variables over anything other method and must follow this pattern: `TF_VAR_name`
 
 ```bash
 export TF_VAR_access_key=AKIAIOSFODNN7EXAMPLE
@@ -138,7 +138,7 @@ export TF_VAR_secret_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 Pros:
 
-* Overwrite variables you want to change
+* Overwrite variables the user wants to change
 * Zero possibility being track to source control
 * Fast for a simple check
 
@@ -146,11 +146,11 @@ Cons:
 
 * Only temporary
 * Not suitable for long projects
-* Lost if you clost the terminal
+* Lost if the terminal is closed
 
 #### Using `.tfvars`
 
-This method would require us to create a file name `secret.tfvars` and in the file  we can record our keys.
+This method would require us to create a file name `secret.tfvars` and in the file, we can record our keys.
 
  **MAKE SURE TO ADD THE FILE TO THE GITIGNORE**.
 
@@ -159,7 +159,7 @@ access_key=AKIAIOSFODNN7EXAMPLE
 secret_key=wJalrXUtnFEMI/K7MDENG/
 ```
 
-Since the file does not have the default name, `terraform.tvfars` we have to use the `-var-file=` flag
+Since the file does not have the default name, `terraform.tvfars`, we have to use the `-var-file=` flag.
 
 ```bash
 terraform apply \
@@ -174,13 +174,13 @@ Pros:
 
 Cons:
 
-* Can accidently track
+* Can accidentally track
 
-### **AWS config**
+### **AWS Config**
 
 ### Config
 
-This method is unique to the aws `provider`, so be sure to read your provider documentation if they have any other way
+This method is unique to the AWS `provider`, so be sure to read the provider documentation if they have any other way to handle secrets.
 
 ```json
 provider "aws" {
@@ -191,24 +191,24 @@ provider "aws" {
 
 Pros:
 
-* Don't have to worry about accidently tracking your credentials
+* Don't have to worry about accidentally tracking credentials
 * Fast
-* Persistant \ Don't have to reassign
+* Persistent \ Don't have to reassign
 
 Cons:
 
 * Not easily reproducible with others
-* Can't work with other credentials [Unless you use profiles]
+* Can't work with other credentials [Unless profiles are used]
 
 <!-- tabs:end -->
 
-After we specify the provider go ahead and run `terraform init`, so terraform can download all the aws plugins. Then run `terraform apply` to make sure your keys are correct. Then we will create an instance, so again refer to the documentation we know the rescource name is `aws_instance` and we learn the required pieces of information needed here is the ami and instance_type, So lets go to the aws console and go through the steps to create an [instance](https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#LaunchInstanceWizard:)
+After we specify the provider go ahead and run `terraform init`, so Terraform can download all the AWS plugins. Then run `terraform apply` to make sure the keys are correct. Then we will create an instance, so again, refer to the documentation. We know the rescource name is `aws_instance`, and we learn the required pieces of information needed here is the ami and instance_type. So let's go to the AWS console and go through the steps to create an [instance](https://us-west-1.console.aws.amazon.com/ec2/v2/home?region=us-west-1#LaunchInstanceWizard:).
 
 ![Machine Image](../images/ami.png)
 
 ![Instance Type](../images/instance_type.png)
 
-Now that we know both the `instance_type` and `ami`, let's apply iy:
+Now that we know both the `instance_type` and `ami`, let's apply it:
 
 ```json
 resource "aws_instance" "web-server" {
@@ -217,7 +217,7 @@ resource "aws_instance" "web-server" {
 }
 ```
 
-Now go ahead and complelete teh left over objectives on your own
+Now go ahead and complete the leftover objectives.
 
 ### Hints
 
