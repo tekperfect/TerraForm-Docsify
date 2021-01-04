@@ -20,7 +20,7 @@
 
 Terraform language is writin in haschicorp configuration language in `.tf` file, it is simmilar to a json format
 
-Within every main `.tf` file or the file terraform builds off of two main blocks: `provider` and  `rescource`. Each of these blocks are resposible for a specific declerative result of the terraform build. They will always follow this **syntax**
+Within every main `.tf` file or the file terraform builds off of two main blocks: `provider` and `rescource`. Each of these blocks are resposible for a specific declerative result of the terraform build. They will always follow this **syntax**
 
 ```json
 <Block Type> "<Provider> or <Rescource Type>" "<Local Name>" {
