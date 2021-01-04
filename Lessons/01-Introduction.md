@@ -31,9 +31,9 @@ By the end of this, you'll be able to...
 
 IaaC or Infrastructure as a Code, is the same as a programmable infrastructure. tl;dr IaaC are ways to manipulate and or create parts of infrastructure e.g. load balancers, security, and networks via a source code.
 
-As an Iaac, Terraform is a DevOps tool to automate and manage the infrastructure of your product and the services that run within your product; However Terraform is main feature is an infrastructure provsioning tool.
+As an Iaac, Terraform is a DevOps tool to automate and manage the infrastructure of the product and the services that run within the product; However, Terraform is main feature is an infrastructure provsioning tool.
 
-> You can say it's the Docker of infrastructure, as they are both a declerative language [defining the desired end results ex. We want 5 servers with these set of perms]
+> It's like the Docker of infrastructure, as they are both a declerative language [defining the desired end results ex. We want 5 servers with these set of perms]
 
 ### Installation
 
@@ -51,9 +51,9 @@ Verify the installation with
 sudo terraform -v
 ```
 
-After I will suggest to install the appropiate Terraform linter to your edtitor, I am using VScode, so I will use this [extenstion](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)
+After that, I suggest to install the appropiate Terraform linter to the edtitor, I am using VScode, so I will use this [extenstion](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)
 
-We will working with v0.12+ compatible requirements, so make sure you have at least v0.12 of the Terraform CLI.
+We will working with v0.12+ compatible requirements, so make sure at least v0.12 of the Terraform CLI is installed.
 
 ## ✍️ Practice
 
