@@ -1,9 +1,9 @@
-resource "aws_instance" "linux-server" {
+resource "aws_instance" "server" {
     ami             = "t2.micro"
-    instance_type   = "ami-00831fc7c1e3ddc60"
-    key_name        = "terraform"
+    instance_type   = var.windows-ami[var.region_list[3]]
+    key_name        = "terraform" # Change key Name
     tags = {
-        Name = "TF-Linux-Server"
+        Name = "TF-${terraform.workspace}-Server"
     }
 
 }

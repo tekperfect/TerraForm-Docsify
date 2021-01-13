@@ -11,7 +11,6 @@
 1. Using data structures
 1. Using Vault with Terraform
 
-
 ### Variables & Strucutres
 
 As we know in terraform variables are handle with: `.tfvars` and variable blocks such as these
