@@ -13,6 +13,7 @@ Alfonso asked me to create a RDS SQL instance with these features:
 First off, I don't even know what is a RDS SQL, so I went to look up what Amazon RDS is. Before I started coding I first made a RDS with amazon console to get a general idea on what is *needed*. So I wennt through both the `easy create` and `standard create` to see everything I can change and the least i can change
 
 > However if you want to see all the choices you have use the old database creation flow
+
 ![Easy Create](./images/1.png)
 
 ![Settings](./images/2.png)
