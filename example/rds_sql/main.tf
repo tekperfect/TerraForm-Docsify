@@ -8,15 +8,10 @@ resource "aws_db_instance" "db" {
     name                        = "test_db"
     username                    = "Terraform"        
     password                    = "password"
-    multi_az                    = true
+    multi_az                    = true  # Multiple availability zones
     skip_final_snapshot         = true  # if ommitted Finalsnahotid throws an error
     backup_retention_period     = 0
-    backup_window               = "06:00-09:00"
+    backup_window               = "06:00-09:00" # Automates Daily Backups
     delete_automated_backups    = true  # deletes backups with DB
     deletion_protection         = false
-
-    
 }
-
-# 1. automated daily backup of DB
-# 1. available to use across multiple availability zones
