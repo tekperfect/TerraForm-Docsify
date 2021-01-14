@@ -21,5 +21,11 @@ After I got a general idea and created a RDS SQL instanc with the amazon console
 
 ![Default Settings](./images/3.png)
 
+After you may run into errors, don't be afraid to look it up. Afterwords in the correct documentation I look for keywords that can lead to my desire end result Alfonso wanted; such as: id,backup and multi. Then I apply and plan the changes.
 
+### Overview
 
+1. Simulate what your application is doing by first working through the console or gui
+1. Find documentation matching your needs
+1. Tried to make changes!
+1. repeat to step 2
