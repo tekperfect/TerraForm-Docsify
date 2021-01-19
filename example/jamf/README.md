@@ -1,5 +1,4 @@
 
 https://unix.stackexchange.com/questions/212329/hiding-password-in-shell-scripts
 
-
-Suggested use, raise script perm and .env to specific user groups, to avoid env exploit
+Make sure to escalate .env perms for specific user groups
