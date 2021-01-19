@@ -4,12 +4,7 @@
 ### SCRIPT VARIABLES ###
 ########################
 
-user=jamfadmin
-home='/home/jamfadmin/'
-scripts='/home/jamfadmin/scripts/'
-jamf_install='/home/jamfadmin/jamf_install'
-jamf_version=10.26.1
-password=1q2w3e4r5t
+source .env
 
 ####################
 ### SCRIPT LOGIC ###
