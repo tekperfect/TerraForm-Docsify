@@ -5,7 +5,6 @@
 ########################
 
 source .env
-current_dir=$(pwd)
 
 ####################
 ### SCRIPT LOGIC ###
@@ -14,37 +13,36 @@ current_dir=$(pwd)
 # Add scripts and installer directories
 # Create /home/jamfadmin/scripts/
 
-if [ $current_dir !=  $scripts]
-then
-    mkdir ${scripts}
-    chmod 0700 ${scripts}   
-    chown "${user}:${user}" ${scripts}
 
-    #Create /home/jamfadmin/jamf_install/
-    mkdir ${jamf_install}
-    chmod 0700 ${jamf_install}
-    chown "${user}:${user}" ${jamf_install}
+mkdir ${scripts}
+chmod 0700 ${scripts}   
+chown "${user}:${user}" ${scripts}
 
-    #Create /home/jamfadmin/jamf_install/10.26.1
-    mkdir ${jamf_install}/${jamf_version}
-    chmod 0700 ${jamf_install}/${jamf_version}
-    chown "${user}:${user}" ${jamf_install}/${jamf_version}
+#Create /home/jamfadmin/jamf_install/
+mkdir ${jamf_install}
+chmod 0700 ${jamf_install}
+chown "${user}:${user}" ${jamf_install}
 
-    # Modify /etc/sudoers for passwordless sudo 
-    # echo '${user} ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
+#Create /home/jamfadmin/jamf_install/10.26.1
+mkdir ${jamf_install}/${jamf_version}
+chmod 0700 ${jamf_install}/${jamf_version}
+chown "${user}:${user}" ${jamf_install}/${jamf_version}
 
-    # Install Unzip
-    apt -y install unzip
+# Modify /etc/sudoers for passwordless sudo 
+# echo '${user} ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-    # Clean up directory
-    mv ${home}/main.sh ${scripts}
+# Install Unzip
+apt -y install unzip
 
-    # Add Jamf Installer
-    mv ${home}/jamf-pro-installer* ${jamf_install}/${jamf_version}
+# Clean up directory
+mv ${home}/main.sh ${scripts}
 
-    # Update apt
-    apt update
-fi 
+# Add Jamf Installer
+mv ${home}/jamf-pro-installer* ${jamf_install}/${jamf_version}
+
+# Update apt
+apt update
+
 
 # region 02
 # Install OpenJDK 11
@@ -130,16 +128,16 @@ read -p "Jamf DB Name: " db_name
 read -p "Jamf Username: " username
 
 # Press "Y" if you want to save the database connection settings to the Jamf Pro configuration (DataBase.xml)
-read -p "Save to Jamf Pro Config (DataBase.xml): y/n" yn
-if [yn == "y"]
+read -p "Save to Jamf Pro Config (DataBase.xml): y/n " yn
+if [ $yn == "y" ]
 then
     echo "Saved Connection"
 fi
 
 
 # Pres "Y" if you want to save the username and password to the Jamf Pro Server Tools CLI configuration file
-read -p "Save username and password to Jamf Sever CLI config File: y/n" yn
-if [yn == "y"]
+read -p "Save username and password to Jamf Sever CLI config File: y/n " yn
+if [ $yn == "y" ]
 then
     echo "Save Creds to Jamf Server"
 fi
