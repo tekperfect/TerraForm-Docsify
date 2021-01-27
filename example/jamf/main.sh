@@ -13,6 +13,10 @@ source .env
 # Add scripts and installer directories
 # Create /home/jamfadmin/scripts/
 
+wget https://tekperfect-devops-uploads.s3-us-west-1.amazonaws.com/jamf-pro-installer-linux-10.26.1.zip .
+
+wget https://tekperfect-devops-uploads.s3-us-west-1.amazonaws.com/ROOT.war .
+
 
 mkdir ${scripts}
 chmod 0700 ${scripts}   
