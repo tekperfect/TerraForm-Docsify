@@ -109,42 +109,10 @@ systemctl start jamf.tomcat8
 
 # endregion
 
-# region 04
-
-# Check Jamf Pro Server Tools CLI version
-jamf-pro --version
+# region 05
 
 # Create Jamf Pro Database and MySQL User Account
 sudo jamf-pro database init
-
-# Enter your MySQL root password
-read -sp "Your MySQL root password:  " password
-
-# Set new MySQL root password, press Enter to skip
-read -sp "MySQL root password, leave blank to skip" new_password
-
-
-read -p "Jamf DB Name: " db_name
-read -p "Jamf Username: " username
-
-# Press "Y" if you want to save the database connection settings to the Jamf Pro configuration (DataBase.xml)
-read -p "Save to Jamf Pro Config (DataBase.xml): y/n " yn
-if [ $yn == "y" ]
-then
-    echo "Saved Connection"
-fi
-
-
-# Pres "Y" if you want to save the username and password to the Jamf Pro Server Tools CLI configuration file
-read -p "Save username and password to Jamf Sever CLI config File: y/n " yn
-if [ $yn == "y" ]
-then
-    echo "Save Creds to Jamf Server"
-fi
-
-# endregion
-
-# region 05
 
 # Set the innodb_buffer_pool_size value to an appropriate size for your server
 sudo jamf-pro database config set --innodb-buffer-pool-size 12G
@@ -166,7 +134,7 @@ sudo jamf-pro database config list
 sudo jamf-pro server stop
 
 # Add MySQL command
-mysql -uroot -p${password} -e "ALTER USER 'casper'@'localhost' IDENTIFIED with mysql_native_password BY '${password}';"
+mysql -u root -p${password} -e "ALTER USER 'casper'@'localhost' IDENTIFIED with mysql_native_password BY '${password}';"
 
 # Restart MySQL
 sudo jamf-pro database restart

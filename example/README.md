@@ -6,6 +6,8 @@
 * [x] Subnet
 * [x] different OS
 * [ ] s3 buckets
+    * [ ] Access Security
+    * [ ] Allow only specified ip
 * [X] Elastic IP
 * [X] Static IP Address
 * [X] Security Groups / keys
