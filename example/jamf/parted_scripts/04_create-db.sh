@@ -10,17 +10,8 @@ source .env
 ### SCRIPT LOGIC ###
 ####################
 
-# # Check Jamf Pro Server Tools CLI version
-jamf-pro --version
-
-# # Create Jamf Pro Database and MySQL User Account
-sudo jamf-pro database init
-
 # # Enter your MySQL root password
 read -sp "Your MySQL root password:  " password
-
-# # Set new MySQL root password, press Enter to skip
-read -sp "MySQL root password, leave blank to skip" new_password
 
 
 read -p "Jamf DB Name: " db_name
