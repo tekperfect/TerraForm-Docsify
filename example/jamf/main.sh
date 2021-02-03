@@ -4,7 +4,8 @@
 ### SCRIPT VARIABLES ###
 ########################
 
-source .env
+home='/home/jamfadmin/'
+source ${home}/.env
 
 ####################
 ### SCRIPT LOGIC ###
@@ -12,11 +13,6 @@ source .env
 
 # Add scripts and installer directories
 # Create /home/jamfadmin/scripts/
-
-wget https://tekperfect-devops-uploads.s3-us-west-1.amazonaws.com/jamf-pro-installer-linux-10.26.1.zip .
-
-wget https://tekperfect-devops-uploads.s3-us-west-1.amazonaws.com/ROOT.war .
-
 
 mkdir ${scripts}
 chmod 0700 ${scripts}   
@@ -32,28 +28,20 @@ mkdir ${jamf_install}/${jamf_version}
 chmod 0700 ${jamf_install}/${jamf_version}
 chown "${user}:${user}" ${jamf_install}/${jamf_version}
 
-# Modify /etc/sudoers for passwordless sudo 
-# echo '${user} ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
-
 # Install Unzip
 apt -y install unzip
 
 # Clean up directory
-mv ${home}/main.sh ${scripts}
-
-# Add Jamf Installer
 mv ${home}/jamf-pro-installer* ${jamf_install}/${jamf_version}
+mv ${home}/jamfdb-install.sh ${scripts}
 
 # Update apt
 apt update
 
+# REGION 02
 
-# region 02
 # Install OpenJDK 11
 apt -y install openjdk-11-jdk
-
-# Check Java version
-java --version
 
 # change selected Java version
 update-alternatives --config java
@@ -82,14 +70,15 @@ sudo echo "mysql-community-server mysql-community-server/default-auth-override s
 export DEBIAN_FRONTEND="noninteractive"
 apt -y install mysql-server
 
-# endregion
+# ENDREGION
 
-# region 03
+# REGION 03
 
 # Add exception for Jamf, SSH, and then enable UFW firewall
 ufw status
 ufw --force enable
 ufw allow 8443/tcp
+ufw allow from ${subnet} to any port 3306
 ufw allow OpenSSH
 ufw reload
 
@@ -108,15 +97,15 @@ systemctl enable jamf.tomcat8
 systemctl is-enabled jamf.tomcat8.service
 systemctl start jamf.tomcat8
 
-# Launch 04_create-db.sh
-# sh ${scripts}/04_create-db.sh
+# ENDREGION
 
-# endregion
+# REGION 05
 
-# region 05
+# Create Database
+mysql -u root -e "CREATE DATABASE jamfsoftware;"
+mysql -u root -e "CREATE USER '${database_user}'@'localhost' IDENTIFIED WITH mysql_native_password BY '${password}';"
+mysql -u root -e "GRANT ALL ON jamfsoftware.* TO '${database_user}'@'localhost';"
 
-# Create Jamf Pro Database and MySQL User Account
-sudo jamf-pro database init
 
 # Set the innodb_buffer_pool_size value to an appropriate size for your server
 sudo jamf-pro database config set --innodb-buffer-pool-size 12G
@@ -124,32 +113,39 @@ sudo jamf-pro database config set --innodb-buffer-pool-size 12G
 # Set the innodb_file_per_table value to true
 sudo jamf-pro database config set --innodb-file-per-table true
 
-# View the complete list of saved Server Tools configuration settings
-sudo jamf-pro config list
+# ENDREGION
 
-# View the complete list of saved Jamf Pro-to-MySQL connection settings
-sudo jamf-pro server config list
+# REGION 06
 
-# View the complete list of saved MySQL database settings
-sudo jamf-pro database config list
-
-# Restart the Services
 # Stop Tomcat
 sudo jamf-pro server stop
 
 # Add MySQL command
-mysql -u root -p${password} -e "ALTER USER 'casper'@'localhost' IDENTIFIED with mysql_native_password BY '${password}';"
+mysql -u root -e "ALTER USER '${database_user}'@'localhost' IDENTIFIED with mysql_native_password BY '${database_password}';"
+mysql -u root -e "CREATE USER '${database_user}'@'${jamf_subnet}' IDENTIFIED BY '${database_password}';"
+mysql -u root -e "GRANT ALL ON ${database_name}.* TO '${database_user}'@'${jamf_subnet}';"
+mysql -u root -e "ALTER USER '${database_user}'@'${jamf_subnet}' IDENTIFIED with mysql_native_password BY '${database_password}';"
+mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${mysql_root_password}';"
+
+# Add to my.cnf file
+sudo echo "default-authentication-plugin=mysql_native_password" >> /etc/mysql/my.cnf
+
+# Configure Jamf-Pro MySQL
+jamf-pro config set --database-host ${database_host}
+jamf-pro config set --database-name ${database_name}
+jamf-pro config set --database-user ${database_user}
+jamf-pro config set --database-password ${database_password}
 
 # Restart MySQL
 sudo jamf-pro database restart
 
 # Start Tomcat
-sudo jamf-pro server restart
+sudo jamf-pro server start
 
-# Apt cleanup
-#apt update
-#apt -y upgrade
-#apt -y autoremove
+# Remove .env file
+rm ${home}/.env
 
+# Change directory
+cd ${home}
 
-#endregion
+# ENDREGION
