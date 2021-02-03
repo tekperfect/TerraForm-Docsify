@@ -4,6 +4,13 @@
 ### SCRIPT VARIABLES ###
 ########################
 
+DEV=true
+# Color
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
 home='/home/jamfadmin/'
 source ${home}/.env
 
@@ -11,8 +18,24 @@ source ${home}/.env
 ### SCRIPT LOGIC ###
 ####################
 
+function red {
+    printf "${RED}$@${NC}\n"
+}
+
+function green {
+    printf "${GREEN}$@${NC}\n"
+}
+
+function yellow {
+    printf "${YELLOW}$@${NC}\n"
+}
+
 # Add scripts and installer directories
 # Create /home/jamfadmin/scripts/
+if [ DEV ]
+then
+    echo $(yellow Starting Scripts /region 01/)
+fi
 
 mkdir ${scripts}
 chmod 0700 ${scripts}   
@@ -39,6 +62,10 @@ mv ${home}/jamfdb-install.sh ${scripts}
 apt update
 
 # REGION 02
+if [ DEV ]
+then
+    echo $(yellow Starting  /region 02/)
+fi
 
 # Install OpenJDK 11
 apt -y install openjdk-11-jdk
@@ -73,6 +100,10 @@ apt -y install mysql-server
 # ENDREGION
 
 # REGION 03
+if [ DEV ]
+then
+    echo $(yellow Starting  /region 03/)
+fi
 
 # Add exception for Jamf, SSH, and then enable UFW firewall
 ufw status
@@ -100,6 +131,10 @@ systemctl start jamf.tomcat8
 # ENDREGION
 
 # REGION 05
+if [ DEV ]
+then
+    echo $(yellow Starting  /region 05/)
+fi
 
 # Create Database
 mysql -u root -e "CREATE DATABASE jamfsoftware;"
@@ -116,6 +151,10 @@ sudo jamf-pro database config set --innodb-file-per-table true
 # ENDREGION
 
 # REGION 06
+if [ DEV ]
+then
+    echo $(yellow Starting  /region 06/)
+fi
 
 # Stop Tomcat
 sudo jamf-pro server stop
