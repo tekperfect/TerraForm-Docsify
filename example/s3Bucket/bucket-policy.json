@@ -8,8 +8,8 @@
             "Principal": "*",
             "Action": "s3:*",
             "Resource": [
-                "arn:aws:s3:::tekperfect-devops-uploads",
-                "arn:aws:s3:::tekperfect-devops-uploads/*"
+                "arn:aws:s3:::tekperfect-test-tf-bucket",
+                "arn:aws:s3:::tekperfect-test-tf-bucket/*"
             ],
             "Condition": {
                 "NotIpAddress": {
