@@ -36,8 +36,9 @@ resource "aws_s3_bucket_policy" "b" {
           "${aws_s3_bucket.b.arn}/*", # if arn is known before creation you can do policy = 
         ]
         Condition = {
-          NotIpAddress = {
+          IpAddress = {
             "aws:SourceIp" : [
+            # Change These IPs to allow only those ips to access the bucket
               "99.124.158.0/32",
               "24.130.254.243/32",
               "67.161.12.173/32"
