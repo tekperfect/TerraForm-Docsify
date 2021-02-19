@@ -39,7 +39,8 @@ resource "aws_s3_bucket_policy" "b" {
           IpAddress = {
             "aws:SourceIp" : [
             # Change These IPs to allow only those ips to access the bucket
-              "99.124.158.0/32",
+            # Make sure to add the machine that apply terraform changes or the bucket will not accept changes e.g Can't destroy
+              "99.124.158.0/32", 
               "24.130.254.243/32",
               "67.161.12.173/32"
             ]
