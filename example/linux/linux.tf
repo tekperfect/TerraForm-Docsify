@@ -1,6 +1,6 @@
 resource "aws_instance" "server" {
-    ami             = "t2.micro"
-    instance_type   = var.linux-ami[var.region_list[3]]
+    ami             = var.linux-ami[var.region_list[2]]
+    instance_type   = "t2.micro"
     key_name        = "terraform" # Change key Name
     tags = {
         Name = "TF-linux-Server"
@@ -19,6 +19,8 @@ resource "aws_vpc" "vpc-1" {
 resource "aws_subnet" "subnet-1" {
     vpc_id      = aws_vpc.vpc-1.id
     cidr_block  = "10.0.1.0/24"
+    map_public_ip_on_launch = true
+    depends_on = [aws_internet_gateway.gateway]
 }
 
 resource "aws_internet_gateway" "gateway" {
@@ -57,22 +59,10 @@ resource "aws_network_interface" "server-nif" {
   
 }
 
-resource "aws_eip" "linux-eip" {
+resource "aws_eip" "eip" {
     vpc = true
+    instance = aws_instance.server.id
     network_interface = aws_network_interface.server-nif.id
-    associate_with_private_ip = "10.0.1.25"
     depends_on = [aws_internet_gateway.gateway]
   
-}
-
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ec2_transit_gateway_vpc_attachment
-
-resource "aws_ec2_transit_gateway" "tgw" {
-  
-}
-
-resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_attach" {
-  subnet_ids         = [aws_subnet.subnet-1.id]
-  transit_gateway_id = aws_ec2_transit_gateway.tgw.id
-  vpc_id             = aws_vpc.vpc-1.id
 }
