@@ -3,7 +3,7 @@ resource "aws_instance" "server" {
     instance_type   = var.windows-ami[var.region_list[3]]
     key_name        = "terraform" # Change key Name
     tags = {
-        Name = "TF-${terraform.workspace}-Server"
+        Name = "TF-Windows-Server"
     }
 
 }
@@ -27,13 +27,13 @@ resource "aws_internet_gateway" "gateway" {
 }
 
 resource "aws_security_group" "allow_traffic" {
-    name        = "ssh_traffic"
-    description = "allow traffic from ssh"
+    name        = "rdp_traffic"
+    description = "allow traffic from rdp"
     vpc_id      = aws_vpc.vpc-1.id
     ingress {
-        description = "SSH"
-        from_port   = 22
-        to_port     = 22
+        description = "RDP"
+        from_port   = 3389
+        to_port     = 3389
         protocol    = "tcp"
         cidr_blocks  = ["0.0.0.0/0"]
     }
@@ -45,7 +45,7 @@ resource "aws_security_group" "allow_traffic" {
     }
 
     tags = {
-        Name = "Allow SSH"
+        Name = "Allow RDP"
     }
   
 }
