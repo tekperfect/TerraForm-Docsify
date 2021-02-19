@@ -25,7 +25,7 @@ variable "windows-ami" {
 
         us-east-1 = "ami-0229f7666f517b31e"
         us-east-2 = "ami-0d5b55fd8cd8738f5"
-        us-west-1 = "ami-0ae930fa924b34ed3"
+        us-west-1 = "ami-0b7c10374cfb013e6"
         us-west-2 = "ami-0706901be27b0d22b"
 
     }
