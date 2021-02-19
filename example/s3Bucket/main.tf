@@ -8,7 +8,7 @@ provider "aws" {
 resource "aws_s3_bucket" "b" {
   bucket = "tekperfect-test-tf-bucket"
   # Bucket name must be truly unique among all users, mention here: https://aws.amazon.com/premiumsupport/knowledge-center/s3-error-bucket-already-exists/
-  #policy = file("bucket-policy.json")
+  #policy = file("bucket-policy.json") # Path to .json file
 
   tags = {
     Name        = "tf test bucket"
