@@ -1,9 +1,3 @@
-provider "aws" {
-  access_key = var.access_key
-  secret_key = var.secret_key
-  region     = "us-west-1"
-}
-
 # if any rescource depicted here take longer than a 30sec there is an error
 resource "aws_s3_bucket" "b" {
   bucket = "tekperfect-test-tf-bucket"
@@ -38,9 +32,9 @@ resource "aws_s3_bucket_policy" "b" {
         Condition = {
           IpAddress = {
             "aws:SourceIp" : [
-            # Change These IPs to allow only those ips to access the bucket
-            # Make sure to add the machine that apply terraform changes or the bucket will not accept changes e.g Can't destroy
-              "99.124.158.0/32", 
+              # Change These IPs to allow only those ips to access the bucket
+              # IMPORTANT:  Make sure to add the machine that apply terraform changes or the bucket will not accept changes e.g Can't destroy
+              "99.124.158.0/32",
               "24.130.254.243/32",
               "67.161.12.173/32"
             ]
