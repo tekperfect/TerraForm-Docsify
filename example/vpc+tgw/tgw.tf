@@ -14,7 +14,7 @@ resource "aws_ec2_transit_gateway" "tgw" {
 
 # vpc attachment take a minute
 resource "aws_ec2_transit_gateway_vpc_attachment" "tgw_attach" {
-  subnet_ids         = [aws_subnet.subnet-1.id,aws_subnet.subnet-2.id]
+  subnet_ids         = [aws_subnet.subnet-1.id]
   transit_gateway_id = aws_ec2_transit_gateway.tgw.id
   vpc_id             = aws_vpc.vpc-1.id
 }
