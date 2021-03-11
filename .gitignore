@@ -29,6 +29,6 @@ override.tf.json
 
 # Testing Folder
 test/
-
+test.*
 # AWS RootKey
 rootkey.csv
