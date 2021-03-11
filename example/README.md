@@ -1,30 +1,11 @@
+# Examples
 
-# TODO:
-## Terraform Examples Demonstrate
+Here are the following examples of setting up systems with terraform:
 
-* [x] VPC creation
-* [x] Subnet
-* [x] different OS
-* [ ] s3 buckets
-    * [ ] Access Security
-    * [ ] Allow only specified ip
-* [X] Elastic IP
-* [X] Static IP Address
-* [X] Security Groups / keys
-* [X] Transit Gateways
+* [jamf](jamf/)
+* [Linux](Linux/)
+* [Windows](windows/)
+* [VPC + TGW](vpc+tgw/)
+* [s3 Bucket](s3Bucket/)
 
 
-Optional:
-* [ ] Working with Workspaces
-
-Each example should be documentated
-
-Terraform workspace is similar to `git branch`
-
-```bash
-terraform workspace new "name"
-```
-
-```bash
-terraform workspace select "name"
-```
