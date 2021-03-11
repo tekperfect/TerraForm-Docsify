@@ -61,7 +61,7 @@ resource "aws_network_interface" "server-nif" {
 
 resource "aws_eip" "eip" {
     vpc = true
-    instance = "${aws_instance.server.id}"
+    instance = aws_instance.server.id
     network_interface = aws_network_interface.server-nif.id
     depends_on = [aws_internet_gateway.gateway]
   
