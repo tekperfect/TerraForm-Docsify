@@ -1,7 +1,7 @@
 resource "aws_instance" "server" {
     ami             = var.windows-ami[var.region_list[2]]
     instance_type   = "t2.micro"
-    key_name        = "terraform" # Change key Name
+    # key_name        = "terraform" # Change key Name
     tags = {
         Name = "TF-Windows-Server"
     }
