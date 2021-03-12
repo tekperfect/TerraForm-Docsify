@@ -1,6 +1,6 @@
 # if any rescource depicted here take longer than a 30sec there is an error
 resource "aws_s3_bucket" "b" {
-  bucket = "tekperfect-test-tf-bucket"
+  bucket = "ninja-is-struggles"
   # Bucket name must be truly unique among all users, mention here: https://aws.amazon.com/premiumsupport/knowledge-center/s3-error-bucket-already-exists/
   #policy = file("bucket-policy.json") # Path to .json file
 
@@ -30,13 +30,12 @@ resource "aws_s3_bucket_policy" "b" {
           "${aws_s3_bucket.b.arn}/*", # if arn is known before creation you can do policy = 
         ]
         Condition = {
-          IpAddress = {
+          NotIpAddress = {
             "aws:SourceIp" : [
-              # Change These IPs to allow only those ips to access the bucket
+              # Change These IPs to allow only those ips to access the bucket / you can't destroy if it's not one of the ips
               # IMPORTANT:  Make sure to add the machine that apply terraform changes or the bucket will not accept changes e.g Can't destroy
-              "99.124.158.0/32",
-              "24.130.254.243/32",
-              "67.161.12.173/32"
+              # If you are even a little be not sure, ask someone who does!!!
+              # ip/cidir
             ]
           }
         }
