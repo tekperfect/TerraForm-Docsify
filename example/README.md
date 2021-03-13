@@ -23,6 +23,7 @@ From now on you will have async classes with me, so I would like for you to crea
 - How do I add files to track
 - How often should I commit
 - What is a commit?
+- What is a proper commit message?
 - Can I have multiple commits on local?
 - If you are not sure if your secrets are checked it what git command should I use
 
