@@ -37,7 +37,7 @@ resource "aws_security_group" "allow_traffic" {
         from_port   = 22
         to_port     = 22
         protocol    = "tcp"
-        cidr_blocks  = ["0.0.0.0/0"]
+      #  cidr_blocks  = ["0.0.0.0/0"] # Change to your home IP
     }
     egress {
         from_port   = 0
@@ -54,7 +54,7 @@ resource "aws_security_group" "allow_traffic" {
 
 resource "aws_network_interface" "server-nif" {
     subnet_id = aws_subnet.subnet-1.id
-    private_ip = "10.0.1.25"
+    # private_ip = "10.0.1.25" # Change IP to something other than .25
     security_groups = [aws_security_group.allow_traffic.id]
   
 }
